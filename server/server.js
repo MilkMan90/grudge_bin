@@ -21,6 +21,12 @@ app.get('/api/grudges', (request, response) => {
   response.status(200).json(app.locals.grudges)
 });
 
+app.post('/api/grudges', (request, response) => {
+  const grudge = request.body;
+  app.locals.grudges.push(grudge)
+  response.status(200).json(app.locals.grudges)
+});
+
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 app.get('/', (req, res) => {
