@@ -20,17 +20,41 @@
 }
 
 .grudges-title {
-  size: 20px;
+  font-size: 30px;
   font-weight: bold;
   margin-top: 10px;
   border-bottom: brown 2px solid;
 }
 
 .single-grudge{
-  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 20px;
 }
 
 .single-grudge:hover{
-  color: red;
+  color: black;
   cursor: pointer;
+}
+
+.absolved{
+  color: purple;
+  animation: rgb 1.25s infinite alternate;
+}
+
+@keyframes rgb {
+  25% {background-color: #00F; }
+  50% {background-color: #0F0; /*blue*/ }
+  75% {background-color: #1FF}
+  100% {background-color: #13F; /*red*/}
+}
+
+.still-to-defeat{
+  color: darkGrey;
+  animation: saturation 1.5s infinite alternate;
+}
+
+@keyframes saturation {
+	100% {background-color: hsl(0, 100%, 50%); }
 }

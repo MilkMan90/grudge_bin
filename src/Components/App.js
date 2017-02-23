@@ -47,7 +47,6 @@ class App extends Component {
   }
   handleForgive(id){
     let grudgeToEdit = this.findGrudge(id)
-    console.log(grudgeToEdit);
     grudgeToEdit.forgiven = !grudgeToEdit.forgiven;
     this.putSingleGrudge(grudgeToEdit)
   }
@@ -72,7 +71,6 @@ class App extends Component {
     })
   }
   showGrudgeDetail(id){
-    console.log(id);
     this.setState({
       showGrudgeID: id
     })
@@ -84,12 +82,10 @@ class App extends Component {
   }
   render() {
     let grudgeDetail = '';
-
     if(this.state.showGrudgeID !== null){
       const grudge = this.findGrudge(this.state.showGrudgeID)
        grudgeDetail = <GrudgeDetails grudge={grudge} handleForgive={(id)=>this.handleForgive(id)}/>
     }
-
     return (
       <div className="App">
         <header>
@@ -97,9 +93,14 @@ class App extends Component {
           <h1>Pugs Not Hugs</h1>
           <img className="pug-logo2" src={pug}/>
         </header>
-        <GrudgeForm handleNewGrudge={(grudge)=>{this.submitNewGrudge(grudge)}}/>
-        <div className="grudge-info-container">
-          <GrudgeList grudges={this.state.grudges} showGrudge={(id)=>this.showGrudgeDetail(id)}/>
+        <GrudgeForm       handleNewGrudge={(grudge)=>{this.submitNewGrudge(grudge)}}
+        />
+        <div
+          className="grudge-info-container"
+        >
+          <GrudgeList
+            grudges={this.state.grudges} showGrudge={(id)=>this.showGrudgeDetail(id)}
+          />
           {grudgeDetail}
         </div>
       </div>

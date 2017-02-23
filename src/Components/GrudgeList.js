@@ -64,7 +64,11 @@ class GrudgeList extends Component {
       let {grudges} = this.props
       grudges = this.state.sortType === 'name' ?  this.sortByName(grudges) : this.sortByDate(grudges)
       grudgeList = grudges.map((grudge)=>{
-        return <SingleGrudge key={grudge.id} grudge={grudge} showGrudge={this.props.showGrudge}/>
+        return <SingleGrudge
+                  key={grudge.id}
+                  grudge={grudge}
+                  showGrudge={this.props.showGrudge}
+                />
       })
       totalGrudges = this.props.grudges.length
       totalUnforgiven = this.getTotalUnforgiven()
