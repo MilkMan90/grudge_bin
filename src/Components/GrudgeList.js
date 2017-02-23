@@ -7,7 +7,7 @@ class GrudgeList extends Component {
     let grudgeArray;
     if(this.props.grudges){
       grudgeArray = this.props.grudges.map((grudge)=>{
-        return <SingleGrudge key={grudge.id} grudge={grudge} handleForgive={this.props.handleForgive}/>
+        return <SingleGrudge key={grudge.id} grudge={grudge} showGrudge={this.props.showGrudge}/>
       })
     }
     return (
