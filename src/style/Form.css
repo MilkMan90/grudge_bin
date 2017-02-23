@@ -1,0 +1,20 @@
+.GrudgeForm{
+  border: 2px solid brown;
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+  text-align: center;
+}
+
+label{
+  margin: 10px;
+}
+
+input[type="text"]{
+  width: 20%;
+}
+
+input[type="submit"]{
+  width: 200px;
+  margin: 10px;
+}
