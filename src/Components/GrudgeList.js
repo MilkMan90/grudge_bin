@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SingleGrudge from './SingleGrudge'
+import {getTotalRedeemed, getTotalUnforgiven} from '../helpers/counts'
 import '../style/List.css';
 
 class GrudgeList extends Component {
@@ -45,21 +46,8 @@ class GrudgeList extends Component {
       dateSort: this.state.dateSort * -1
     })
   }
-  getTotalRedeemed(){
-    return this.props.grudges.filter((grudge)=>{
-      return grudge.forgiven === true
-    }).length
-  }
-  getTotalUnforgiven(){
-    return this.props.grudges.filter((grudge)=>{
-      return grudge.forgiven === false
-    }).length
-  }
   render() {
-    let grudgeList;
-    let totalGrudges;
-    let totalUnforgiven;
-    let totalRedeemed;
+    let grudgeList, totalGrudges, totalUnforgiven, totalRedeemed;
     if(this.props.grudges){
       let {grudges} = this.props
       grudges = this.state.sortType === 'name' ?  this.sortByName(grudges) : this.sortByDate(grudges)
@@ -71,8 +59,8 @@ class GrudgeList extends Component {
                 />
       })
       totalGrudges = this.props.grudges.length
-      totalUnforgiven = this.getTotalUnforgiven()
-      totalRedeemed = this.getTotalRedeemed()
+      totalUnforgiven = getTotalUnforgiven(this.props.grudges)
+      totalRedeemed = getTotalRedeemed(this.props.grudges)
     }
     return (
       <ul className="GrudgeList">
