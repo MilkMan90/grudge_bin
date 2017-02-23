@@ -22,6 +22,9 @@ class App extends Component {
       );
     });
   }
+  submitNewGrudge(grudge){
+      console.log(grudge);
+  }
   handleForgive(id){
     let grudgeToEdit = this.state.grudges[id]
     console.log(grudgeToEdit);
@@ -53,7 +56,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Crush Thy Enemies</h1>
-        <GrudgeForm />
+        <GrudgeForm handleNewGrudge={(grudge)=>{this.submitNewGrudge(grudge)}}/>
         <GrudgeList grudges={this.state.grudges} handleForgive={(id)=>this.handleForgive(id)}/>
       </div>
     );
