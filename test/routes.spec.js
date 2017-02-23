@@ -37,3 +37,20 @@ describe('POST /api/grudges', function() {
     });
   });
 });
+
+describe('PUT /api/grudges', function() {
+    it('should update an existing grudge', function(done) {
+    const newGrudge = new Grudge('Donald Fucking Trump', 'Being a HUGE piece of shit', false, Date.now())
+    const request = {newGrudge, id: 0}
+    chai.request(server)
+    .put('/api/grudges')
+    .send(request)
+    .end(function(err, res) {
+    res.should.have.status(200);
+    res.should.be.json;
+    res.body.should.be.a('array');
+    res.body.should.have.lengthOf(3);
+    done();
+    });
+  });
+});
