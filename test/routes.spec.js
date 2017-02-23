@@ -40,8 +40,8 @@ describe('POST /api/grudges', function() {
 
 describe('PUT /api/grudges', function() {
     it('should update an existing grudge', function(done) {
-      const newGrudge = new Grudge('Donald Fucking Trump', 'Being a HUGE piece of shit', false, Date.now())
-      const request = {newGrudge, id: 0}
+      const grudge = new Grudge('Donald Fucking Trump', 'Being a HUGE piece of shit', false, Date.now())
+      const request = {grudge, id: 0}
       chai.request(server)
       .put('/api/grudges')
       .send(request)
@@ -51,6 +51,19 @@ describe('PUT /api/grudges', function() {
       res.body.should.be.a('array');
       res.body.should.have.lengthOf(3);
       res.body[0].name.should.be.equal('Donald Fucking Trump');
+      res.body[0].offense.should.be.equal('Being a HUGE piece of shit');
+      done();
+    });
+  });
+    it('should fail to update a non-existing grudge', function(done) {
+      const grudge = new Grudge('Donald Fucking Trump', 'Being a HUGE piece of shit', false, Date.now())
+      const request = {grudge, id: 5}
+      chai.request(server)
+      .put('/api/grudges')
+      .send(request)
+      .end(function(err, res) {
+      res.should.have.status(404);
+      res.should.be.json;
       done();
     });
   });
