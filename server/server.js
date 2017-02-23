@@ -24,7 +24,7 @@ app.get('/api/grudges', (request, response) => {
 app.post('/api/grudges', (request, response) => {
   const {grudge} = request.body;
   newGrudge = new Grudge(app.locals.grudges.length, grudge.name, grudge.offense, false, grudge.date)
-  app.locals.grudges.push(grudge)
+  app.locals.grudges.push(newGrudge)
   response.status(200).json(app.locals.grudges)
 });
 

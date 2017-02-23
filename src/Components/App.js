@@ -23,7 +23,6 @@ class App extends Component {
     });
   }
   submitNewGrudge(grudge){
-    console.log(grudge);
     fetch(`/api/grudges`, {
       method: 'post',
       headers: {
@@ -47,7 +46,6 @@ class App extends Component {
     console.log(grudgeToEdit);
     grudgeToEdit.forgiven = !grudgeToEdit.forgiven;
     this.putSingleGrudge(grudgeToEdit)
-
   }
   putSingleGrudge(grudge){
     fetch(`/api/grudges`, {
