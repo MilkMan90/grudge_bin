@@ -21,6 +21,22 @@ app.get('/api/grudges', (request, response) => {
   response.status(200).json(app.locals.grudges)
 });
 
+app.post('/api/grudges', (request, response) => {
+  const grudge = request.body;
+  app.locals.grudges.push(grudge)
+  response.status(200).json(app.locals.grudges)
+});
+
+app.put('/api/grudges', (request, response) => {
+  const {grudge, id} = request.body;
+  if(app.locals.grudges[id]){
+    app.locals.grudges[id] = grudge
+    response.status(200).json(app.locals.grudges)
+  } else {
+    response.status(404).json({message:'Grudge does not exist'})
+  }
+});
+
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 app.get('/', (req, res) => {
