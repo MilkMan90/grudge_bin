@@ -6,8 +6,9 @@ class GrudgeList extends Component {
   constructor(){
     super()
     this.state = {
+      sortType: 'name',
       nameSort: -1,
-      dateSort: 'newest'
+      dateSort: -1
     }
   }
   sortByName(grudges){
@@ -24,15 +25,25 @@ class GrudgeList extends Component {
       })
     }
   sortByDate(grudges){
-
+    return grudges.sort((a, b) => {
+      if(this.state.dateSort === -1) {
+        return a.date - b.date;
+      } else {
+        return b.date - a.date;
+      }
+    });
   }
   toggleSortByName(){
-      this.setState({
-        nameSort: this.state.nameSort * -1
-      })
+    this.setState({
+      sortType: 'name',
+      nameSort: this.state.nameSort * -1
+    })
   }
   toggleSortByDate(){
-
+    this.setState({
+      sortType: 'date',
+      dateSort: this.state.dateSort * -1
+    })
   }
   render() {
     let grudgeList;
@@ -40,17 +51,23 @@ class GrudgeList extends Component {
 
       let {grudges} = this.props
       //sort by name
-      grudges = this.sortByName(grudges)
-      //sort by date
+      if(this.state.sortType === 'name'){
+        grudges = this.sortByName(grudges)
+      } else {
+        grudges = this.sortByDate(grudges)
+      }
 
+      // grudges = this.state.sortType === 'name' ?  this.sortByName(grudges) : this.sortByDate(grudges)
+
+      console.log(grudges);
       grudgeList = grudges.map((grudge)=>{
         return <SingleGrudge key={grudge.id} grudge={grudge} showGrudge={this.props.showGrudge}/>
       })
     }
     return (
       <ul className="GrudgeList">
-        <button onClick={()=>this.toggleSortByDate()}>Sort By Date</button>
-        <button onClick={()=>this.toggleSortByName()}>Sort By Name</button>
+        <button onClick={()=>this.toggleSortByDate()}>Sort By Date {this.state.dateSort === -1 ? "Old > New" : "New > Old"}</button>
+        <button onClick={()=>this.toggleSortByName()}>Sort By Name {this.state.nameSort === -1 ? "Z > A" : "A > Z"}</button>
         {grudgeList}
       </ul>
     );
