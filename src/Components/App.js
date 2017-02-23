@@ -25,7 +25,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+        <h1>Crush Thy Enemies</h1>
+        <GrudgeForm />
+        <GrudgeList grudges={this.state.grudges}/>
       </div>
     );
   }

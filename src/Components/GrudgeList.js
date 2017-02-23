@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
+import SingleGrudge from './SingleGrudge'
 import '../style/List.css';
 
 class GrudgeList extends Component {
   render() {
+    let grudgeArray;
+    if(this.props.grudges){
+      grudgeArray = this.props.grudges.map((grudge)=>{
+        return <SingleGrudge key={grudge.id} grudge={grudge} handleForgive={this.props.handleForgive}/>
+      })
+    }
+    console.log(this.props.grudges);
     return (
-      <div className="GrudgeList">
-
-      </div>
+      <ul className="GrudgeList">
+        {grudgeArray}
+      </ul>
     );
   }
 }
