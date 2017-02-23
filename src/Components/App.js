@@ -22,12 +22,30 @@ class App extends Component {
       );
     });
   }
+  submitNewGrudge(grudge){
+    fetch(`/api/grudges`, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        grudge
+      })
+    })
+    .then((res)=>{
+      return res.json();
+    }).then((res)=>{
+      this.setState({
+        grudges: res
+      })
+    })
+  }
   handleForgive(id){
     let grudgeToEdit = this.state.grudges[id]
     console.log(grudgeToEdit);
     grudgeToEdit.forgiven = !grudgeToEdit.forgiven;
     this.putSingleGrudge(grudgeToEdit)
-
   }
   putSingleGrudge(grudge){
     fetch(`/api/grudges`, {
@@ -53,7 +71,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Crush Thy Enemies</h1>
-        <GrudgeForm />
+        <GrudgeForm handleNewGrudge={(grudge)=>{this.submitNewGrudge(grudge)}}/>
         <GrudgeList grudges={this.state.grudges} handleForgive={(id)=>this.handleForgive(id)}/>
       </div>
     );

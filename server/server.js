@@ -22,15 +22,20 @@ app.get('/api/grudges', (request, response) => {
 });
 
 app.post('/api/grudges', (request, response) => {
-  const grudge = request.body;
-  app.locals.grudges.push(grudge)
+  const {grudge} = request.body;
+  newGrudge = new Grudge(app.locals.grudges.length, grudge.name, grudge.offense, false, grudge.date)
+  app.locals.grudges.push(newGrudge)
   response.status(200).json(app.locals.grudges)
 });
 
 app.put('/api/grudges', (request, response) => {
   const {grudge, id} = request.body;
+
   if(app.locals.grudges[id]){
-    app.locals.grudges[id] = grudge
+    app.locals.grudges[id].name = grudge.name
+    app.locals.grudges[id].offense = grudge.offense
+    app.locals.grudges[id].forgiven = grudge.forgiven
+    app.locals.grudges[id].date = grudge.date
     response.status(200).json(app.locals.grudges)
   } else {
     response.status(404).json({message:'Grudge does not exist'})
