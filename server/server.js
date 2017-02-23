@@ -8,30 +8,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.locals.grudges = []
 
-//add initial grudges for testing
-const grudge1 = new Grudge('Donald Trump', 'Being a piece of shit', false, Date.now())
-const grudge2 = new Grudge('Matt', 'Being Me', true, Date.now())
-app.locals.grudges.push(grudge1)
-app.locals.grudges.push(grudge2)
+const initializeGrudges = () => {
+  const grudge1 = new Grudge('Donald Trump', 'Being a piece of shit', false, Date.now())
+  const grudge2 = new Grudge('Matt', 'Being Me', true, Date.now())
+  app.locals.grudges.push(grudge1)
+  app.locals.grudges.push(grudge2)
+}
+
+initializeGrudges()
 
 app.get('/api/grudges', (request, response) => {
   response.status(200).json(app.locals.grudges)
-});
-
-app.post('/api/grudges', (request, response) => {
-  const { folderName } = request.body;
-  const folder = {name: folderName, created_at: new Date};
-  database('folders').insert(folder)
-    .then(function(){
-      database('folders').select()
-        .then(function(folders){
-          response.status(200).json(folders);
-        })
-        .catch(function(error) {
-          console.error('somethings wrong with db'+ error);
-          response.status(404);
-        });
-    });
 });
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
