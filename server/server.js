@@ -2,17 +2,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 const path = require('path');
-
+const Grudge = require('./models/grudge.js')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-function Grudge(name, offense, forgiven, date){
-  this.id = Date.now();
-  this.name = name;
-  this.offense = offense;
-  this.forgiven = forgiven || false;
-  this.date = date;
-}
 
 app.locals.grudges = []
 
