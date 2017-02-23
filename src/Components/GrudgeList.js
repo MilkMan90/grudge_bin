@@ -48,18 +48,8 @@ class GrudgeList extends Component {
   render() {
     let grudgeList;
     if(this.props.grudges){
-
       let {grudges} = this.props
-      //sort by name
-      if(this.state.sortType === 'name'){
-        grudges = this.sortByName(grudges)
-      } else {
-        grudges = this.sortByDate(grudges)
-      }
-
-      // grudges = this.state.sortType === 'name' ?  this.sortByName(grudges) : this.sortByDate(grudges)
-
-      console.log(grudges);
+      grudges = this.state.sortType === 'name' ?  this.sortByName(grudges) : this.sortByDate(grudges)
       grudgeList = grudges.map((grudge)=>{
         return <SingleGrudge key={grudge.id} grudge={grudge} showGrudge={this.props.showGrudge}/>
       })
