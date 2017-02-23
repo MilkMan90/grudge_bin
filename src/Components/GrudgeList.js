@@ -45,13 +45,13 @@ class GrudgeList extends Component {
       dateSort: this.state.dateSort * -1
     })
   }
-  getTotalRedeemed(){
-    return this.props.grudges.filter((grudge)=>{
+  getTotalRedeemed(grudges){
+    return grudges.filter((grudge)=>{
       return grudge.forgiven === true
     }).length
   }
-  getTotalUnforgiven(){
-    return this.props.grudges.filter((grudge)=>{
+  getTotalUnforgiven(grudges){
+    return grudges.filter((grudge)=>{
       return grudge.forgiven === false
     }).length
   }
@@ -71,8 +71,8 @@ class GrudgeList extends Component {
                 />
       })
       totalGrudges = this.props.grudges.length
-      totalUnforgiven = this.getTotalUnforgiven()
-      totalRedeemed = this.getTotalRedeemed()
+      totalUnforgiven = this.getTotalUnforgiven(this.props.grudges)
+      totalRedeemed = this.getTotalRedeemed(this.props.grudges)
     }
     return (
       <ul className="GrudgeList">

@@ -5,8 +5,6 @@ import '../style/Details.css';
 
 class GrudgeDetails extends Component {
   render() {
-    console.log(this.props.grudge);
-
     const {grudge} = this.props
     return (
       <div className="GrudgeDetails">
