@@ -46,7 +46,7 @@ class App extends Component {
     })
   }
   handleForgive(id){
-    let grudgeToEdit = this.state.grudges[id]
+    let grudgeToEdit = this.findGrudge(id)
     console.log(grudgeToEdit);
     grudgeToEdit.forgiven = !grudgeToEdit.forgiven;
     this.putSingleGrudge(grudgeToEdit)
@@ -72,15 +72,24 @@ class App extends Component {
     })
   }
   showGrudgeDetail(id){
+    console.log(id);
     this.setState({
       showGrudgeID: id
     })
   }
+  findGrudge(id){
+    return this.state.grudges.find((grudge)=>{
+      return grudge.id === id
+    })
+  }
   render() {
     let grudgeDetail = '';
+
     if(this.state.showGrudgeID !== null){
-       grudgeDetail = <GrudgeDetails grudge={this.state.grudges[this.state.showGrudgeID]} handleForgive={(id)=>this.handleForgive(id)}/>
+      const grudge = this.findGrudge(this.state.showGrudgeID)
+       grudgeDetail = <GrudgeDetails grudge={grudge} handleForgive={(id)=>this.handleForgive(id)}/>
     }
+
     return (
       <div className="App">
         <header>

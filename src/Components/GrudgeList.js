@@ -45,14 +45,30 @@ class GrudgeList extends Component {
       dateSort: this.state.dateSort * -1
     })
   }
+  getTotalRedeemed(){
+    return this.props.grudges.filter((grudge)=>{
+      return grudge.forgiven === true
+    }).length
+  }
+  getTotalUnforgiven(){
+    return this.props.grudges.filter((grudge)=>{
+      return grudge.forgiven === false
+    }).length
+  }
   render() {
     let grudgeList;
+    let totalGrudges;
+    let totalUnforgiven;
+    let totalRedeemed;
     if(this.props.grudges){
       let {grudges} = this.props
       grudges = this.state.sortType === 'name' ?  this.sortByName(grudges) : this.sortByDate(grudges)
       grudgeList = grudges.map((grudge)=>{
         return <SingleGrudge key={grudge.id} grudge={grudge} showGrudge={this.props.showGrudge}/>
       })
+      totalGrudges = this.props.grudges.length
+      totalUnforgiven = this.getTotalUnforgiven()
+      totalRedeemed = this.getTotalRedeemed()
     }
     return (
       <ul className="GrudgeList">
@@ -66,6 +82,18 @@ class GrudgeList extends Component {
           onClick={()=>this.toggleSortByName()}>
             Sort By Name {this.state.nameSort === -1 ? "Z > A" : "A > Z"}
         </button>
+        <div className="totals">
+          Total Grudges: {totalGrudges}
+        </div>
+        <div className="totals">
+          Total Redeemed: {totalRedeemed}
+        </div>
+        <div className="totals">
+          Total Unforgiven: {totalUnforgiven}
+        </div>
+        <h3 className="grudges-title">
+          Grudges
+        </h3>
         {grudgeList}
       </ul>
     );

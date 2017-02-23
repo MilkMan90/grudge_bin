@@ -15,6 +15,17 @@
   right: 10px
 }
 
+.totals{
+  margin-top: 5px;
+}
+
+.grudges-title {
+  size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  border-bottom: brown 2px solid;
+}
+
 .single-grudge{
   margin-top: 10px;
 }
