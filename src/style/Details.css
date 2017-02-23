@@ -1,0 +1,8 @@
+.GrudgeDetails{
+  position: absolute;
+  right: 0px;
+  margin-top: 10px;
+  display: inline-block;
+  width: 48%;
+  padding-left: 10px;
+}

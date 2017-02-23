@@ -56,8 +56,16 @@ class GrudgeList extends Component {
     }
     return (
       <ul className="GrudgeList">
-        <button onClick={()=>this.toggleSortByDate()}>Sort By Date {this.state.dateSort === -1 ? "Old > New" : "New > Old"}</button>
-        <button onClick={()=>this.toggleSortByName()}>Sort By Name {this.state.nameSort === -1 ? "Z > A" : "A > Z"}</button>
+        <button
+          className="sort-by-date"
+          onClick={()=>this.toggleSortByDate()}>
+            Sort By Date {this.state.dateSort === -1 ? "Old > New" : "New > Old"}
+        </button>
+        <button
+          className="sort-by-name"
+          onClick={()=>this.toggleSortByName()}>
+            Sort By Name {this.state.nameSort === -1 ? "Z > A" : "A > Z"}
+        </button>
         {grudgeList}
       </ul>
     );
