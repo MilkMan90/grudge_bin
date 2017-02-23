@@ -11,7 +11,7 @@ app.locals.grudges = []
 const initializeGrudges = () => {
   const grudge1 = new Grudge(app.locals.grudges.length,'Donald Trump', 'Being a piece of shit', false, Date.now())
   app.locals.grudges.push(grudge1)
-  const grudge2 = new Grudge(app.locals.grudges.length,'Matt', 'Being Me', true, Date.now())
+  const grudge2 = new Grudge(app.locals.grudges.length,'Matt', 'Being Me', false, Date.now())
   app.locals.grudges.push(grudge2)
 }
 

@@ -5,7 +5,7 @@ const SingleGrudge = ({grudge, handleForgive}) => {
     <li key={grudge.id} className="single-grudge">
       <span>{grudge.name}</span>
       <span>{grudge.offense}</span>
-      <button>Forgive or Not</button>
+      <button onClick={()=>handleForgive(grudge.id)}>{grudge.forgiven ? 'Unforgive' : 'Forgive'}</button>
       <span>{grudge.data}</span>
     </li>
   )

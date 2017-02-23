@@ -10,7 +10,6 @@ class GrudgeList extends Component {
         return <SingleGrudge key={grudge.id} grudge={grudge} handleForgive={this.props.handleForgive}/>
       })
     }
-    console.log(this.props.grudges);
     return (
       <ul className="GrudgeList">
         {grudgeArray}
