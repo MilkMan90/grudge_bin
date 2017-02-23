@@ -24,10 +24,13 @@ describe('GET /api/grudges', function() {
 
 describe('POST /api/grudges', function() {
     it('should create a new grudge', function(done) {
-    let newGrudge = new Grudge('Name', 'Offense', false, Date.now())
+    let newGrudge = { name: 'Name',
+                      offense:'Offense',
+                      date: Date.now()
+                    }
     chai.request(server)
     .post('/api/grudges')
-    .send(newGrudge)
+    .send({grudge: newGrudge})
     .end(function(err, res) {
     res.should.have.status(200);
     res.should.be.json;
@@ -40,7 +43,11 @@ describe('POST /api/grudges', function() {
 
 describe('PUT /api/grudges', function() {
     it('should update an existing grudge', function(done) {
-      const grudge = new Grudge('Donald Fucking Trump', 'Being a HUGE piece of shit', false, Date.now())
+      let grudge = { name: 'Donald Fucking Trump',
+                        offense:'Being a HUGE piece of shit',
+                        foriven: true,
+                        date: Date.now()
+                      }
       const request = {grudge, id: 0}
       chai.request(server)
       .put('/api/grudges')
