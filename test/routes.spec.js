@@ -4,6 +4,7 @@ var chai = require('chai');
 var should = chai.should();
 var chaiHttp = require('chai-http');
 var server = require('../server/server.js');
+var Grudge = require('../server/models/grudge.js')
 
 chai.use(chaiHttp);
 
@@ -16,6 +17,22 @@ describe('GET /api/grudges', function() {
     res.should.be.json;
     res.body.should.be.a('array');
     res.body.should.have.lengthOf(2);
+    done();
+    });
+  });
+});
+
+describe('POST /api/grudges', function() {
+    it('should create a new grudge', function(done) {
+    let newGrudge = new Grudge('Name', 'Offense', false, Date.now())
+    chai.request(server)
+    .post('/api/grudges')
+    .send(newGrudge)
+    .end(function(err, res) {
+    res.should.have.status(200);
+    res.should.be.json;
+    res.body.should.be.a('array');
+    res.body.should.have.lengthOf(3);
     done();
     });
   });
