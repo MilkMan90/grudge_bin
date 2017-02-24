@@ -11,6 +11,11 @@
   margin: 10px;
 }
 
+.name{
+  font-weight: bold;
+  font-size: 30px;
+}
+
 .forgive-button{
   background-color:#9b59b6;
   color: white;

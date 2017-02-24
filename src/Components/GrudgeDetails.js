@@ -8,6 +8,9 @@ class GrudgeDetails extends Component {
     const {grudge} = this.props
     return (
       <div className="GrudgeDetails">
+        <h3 className="item name">
+          {grudge.name}
+        </h3>
         <div className="item offense">
           Offense: {grudge.offense}
         </div>
