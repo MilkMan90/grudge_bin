@@ -15,6 +15,20 @@
   right: 10px
 }
 
+.sort{
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  outline: none;
+  width: 175px;
+  height: 25px;
+  font-size: 12px;
+}
+
+.sort:hover{
+  background-color: #f39c12;
+}
+
 .totals{
   margin-top: 5px;
 }
@@ -44,10 +58,10 @@
 }
 
 @keyframes rgb {
-  25% {background-color: #00F; }
-  50% {background-color: #0F0; /*blue*/ }
-  75% {background-color: #1FF}
-  100% {background-color: #13F; /*red*/}
+  25% {background-color: #9bf442 }
+  50% {background-color: #5cf441}
+  75% {background-color: #41f473}
+  100% {background-color: #41f4a9}
 }
 
 .still-to-defeat{

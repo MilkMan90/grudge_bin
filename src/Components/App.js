@@ -87,13 +87,16 @@ class App extends Component {
        grudgeDetail = <GrudgeDetails grudge={grudge} handleForgive={(id)=>this.handleForgive(id)}/>
     }
     return (
-      <div className="App">
+      <div
+        className="App"
+      >
         <header>
           <img className="pug-logo1" src={pug}/>
           <h1>Pugs Not Hugs</h1>
           <img className="pug-logo2" src={pug}/>
         </header>
-        <GrudgeForm       handleNewGrudge={(grudge)=>{this.submitNewGrudge(grudge)}}
+        <GrudgeForm
+          handleNewGrudge={(grudge)=>{this.submitNewGrudge(grudge)}}
         />
         <div
           className="grudge-info-container"

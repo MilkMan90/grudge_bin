@@ -27,7 +27,7 @@ class GrudgeList extends Component {
     }
   sortByDate(grudges){
     return grudges.sort((a, b) => {
-      if(this.state.dateSort === -1) {
+      if(this.state.dateSort === 1) {
         return a.date - b.date;
       } else {
         return b.date - a.date;
@@ -65,12 +65,12 @@ class GrudgeList extends Component {
     return (
       <ul className="GrudgeList">
         <button
-          className="sort-by-date"
+          className="sort sort-by-date"
           onClick={()=>this.toggleSortByDate()}>
             Sort By Date {this.state.dateSort === -1 ? "Old > New" : "New > Old"}
         </button>
         <button
-          className="sort-by-name"
+          className="sort sort-by-name"
           onClick={()=>this.toggleSortByName()}>
             Sort By Name {this.state.nameSort === -1 ? "Z > A" : "A > Z"}
         </button>
