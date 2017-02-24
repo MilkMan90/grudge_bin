@@ -8,13 +8,14 @@ class GrudgeDetails extends Component {
     const {grudge} = this.props
     return (
       <div className="GrudgeDetails">
-        <div className="Offense">
+        <div className="item offense">
           Offense: {grudge.offense}
         </div>
-        <div className="date-of-offense">
+        <div className="item date-of-offense">
           Date of Offense: {moment(grudge.date).format("MMM Do YY")}
         </div>
         <button
+          className="item forgive-button"
           onClick={()=>this.props.handleForgive(grudge.id)}
         >
           {grudge.forgiven ? 'Unforgive' : 'Forgive'}

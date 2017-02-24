@@ -15,6 +15,20 @@
   right: 10px
 }
 
+.sort{
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  outline: none;
+  width: 175px;
+  height: 25px;
+  font-size: 12px;
+}
+
+.sort:hover{
+  background-color: #f39c12;
+}
+
 .totals{
   margin-top: 5px;
 }
