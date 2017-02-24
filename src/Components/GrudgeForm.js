@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../style/Form.css';
+import moment from 'moment'
 
 class GrudgeForm extends Component {
   submitNewGrudge(e){
@@ -7,8 +8,9 @@ class GrudgeForm extends Component {
     const newGrudge = {
       name: this.refs.name.value,
       offense: this.refs.offense.value,
-      date: new Date(this.refs.date.value)
+      date: moment(new Date(this.refs.date.value)).valueOf()
     }
+    console.log(newGrudge.date);
     this.props.handleNewGrudge(newGrudge)
   }
   render() {

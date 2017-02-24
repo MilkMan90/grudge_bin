@@ -27,7 +27,7 @@ class GrudgeList extends Component {
     }
   sortByDate(grudges){
     return grudges.sort((a, b) => {
-      if(this.state.dateSort === -1) {
+      if(this.state.dateSort === 1) {
         return a.date - b.date;
       } else {
         return b.date - a.date;
